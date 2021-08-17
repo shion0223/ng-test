@@ -1,0 +1,99 @@
+<mat-toolbar>
+  <span>My Application</span>
+</mat-toolbar>
+
+<div _ngcontent-wpm-c100 class="container">
+
+  <form class="example-form">
+    <div _ngcontent-yde-c100 class="form-field-container">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>名前</mat-label>
+        <input matInput [(ngModel)]="name" name="name">
+      </mat-form-field>
+    </div>
+
+    <div _ngcontent-yde-c100 class="form-date-container">
+      <mat-form-field appearance="fill">
+        <mat-label>生年月日</mat-label>
+        <input matInput [matDatepicker]="dp" (dateChange)="calculateAge('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp startView="multi-year" panelClass="example-month-picker">
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div _ngcontent-yde-c100 class="form-field-container">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>年齢</mat-label>
+        <input matInput [(ngModel)]="age" name="age">
+      </mat-form-field>
+    </div>
+
+    <div _ngcontent-yde-c100 class="form-btn-container">
+      <button (click)="register()" type="button" mat-stroked-button color="primary">登録</button>
+    </div>
+
+  </form>
+
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+
+    <!-- birthday Column -->
+    <ng-container matColumnDef="birthday">
+      <th mat-header-cell *matHeaderCellDef> birthday </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthday}} </td>
+    </ng-container>
+
+    <!-- age Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}}歳 </td>
+    </ng-container>
+
+    <!-- age Column -->
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element; let i = index;"> 
+        <div _ngcontent-yde-c100 class="td-btn-container">
+          <button (click)="deleteRowData(i)" type="button" mat-stroked-button color="warn">削除</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>

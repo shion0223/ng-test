@@ -15,13 +15,14 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { SampleComponent } from './components/sample/sample.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SampleComponent
   ],
   imports: [
     BrowserModule,
